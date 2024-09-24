@@ -55,6 +55,8 @@ gpp = m.get_variable("gpp")
 reco = m.get_variable("reco")
 ```
 
+Because I write my ILAMB functions to accept this (or a similar) model object, they can be agnostic about what variables are called or even how the data is represented in memory.
+
 ## Easy Extensions
 
 I wanted to start with the simplest structure which would solve the synonym problem, but there is a lot of functionality that would be easy to layer in:
@@ -62,3 +64,4 @@ I wanted to start with the simplest structure which would solve the synonym prob
 - On model initialization, we can search the variables for grid information (`areacella`, `areacello`, `sftlf`, `sftlo`, etc.) and then automatically associate these with the variables when requested via `get_variable()`.
 - Provide a `from_yaml()` or `from_dict()` initializer so models can be setup in external files and tools can automatically read them.
 - Add a derived model class which uses `intake-esgf` to automatically download files from ESGF.
+- Add a E3SM derived model class which allows for reading the native model output.
